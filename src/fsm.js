@@ -9,10 +9,9 @@ class FSM {
         this.rnd = [];
         this.indx = 0;
         if(this.config.initial !== 'normal'){
-            //throw new Error('Initail not Normal');
+           
             this.config.initial = 'normal';
-        }
-        
+        }        
     }
 
     /**
@@ -48,8 +47,7 @@ class FSM {
             }
         }    
         
-        throw new Error('Error');
-       
+        throw new Error('Error');       
     }
 
     /**
@@ -89,7 +87,8 @@ class FSM {
      * @returns {Array}
      */
     getStates(event) {
-        let result = []
+
+        let result = [];
         for(let key in this.config.states){ 
             if(!event) {
                 result.push(key);
@@ -116,9 +115,7 @@ class FSM {
         this.indx++;
         this.config.initial = current;      
         
-        return true;
-
-        
+        return true;        
     }
 
     /**
@@ -127,7 +124,7 @@ class FSM {
      * @returns {Boolean}
      */
     redo() {
-        
+
         if((this.rnd.length === 0)) return false;
         if(this.rnd[this.rnd.length-1] === this.config.initial) return false;             
         let current = this.rnd.reverse();       
